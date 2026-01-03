@@ -4,142 +4,54 @@
 
 A comprehensive web-based clothing e-commerce system built with Next.js, PostgreSQL, and Express.
 
+## Project Overview
+
+WearCart is a cutting-edge **Hybrid E-commerce Platform** that bridges the gap between Web2 and Web3. It offers a traditional shopping experience with advanced features like crypto payments and smart contract integration.
+
 ## Features
 
-### Customer Portal (Frontend)
-- Browse products with filters (category, type, search)
-- Add items to cart
-- Apply coupon codes during checkout
-- Make payments
-- View and download sale orders and invoices
+### 🛍️ Customer Experience
+- **Hybrid Payments**: Pay with Credit Card (Razorpay) OR Crypto (ETH/Sepolia).
+- **Web3 Integration**: Connect Wallet (Metamask/Rainbow) to view balance and make blockchain purchases.
+- **Smart Filters**: Browse products by category, type, and price.
+- **Order Tracking**: View status of both traditional and blockchain transactions.
 
-### Internal Users (Backend Admin)
-- Manage products (create, edit, stock, publish/unpublish)
-- Manage contacts/users
-- Create and manage sale orders, purchase orders
-- Generate customer invoices and vendor bills
-- Record payments
-- Set up payment terms and discount offers (coupon codes)
-- View sales and purchase reports
+### 🔐 Admin Dashboard
+- **Product Management**: Create, edit, and inventory control.
+- **Sales Overview**: Track revenue from all sources.
+- **Invoicing**: Automatic invoice generation for orders.
 
 ## Tech Stack
 
-- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Frontend**: Next.js 14, React, Tailwind CSS, RainBowKit (Web3)
 - **Backend**: Node.js, Express.js
-- **Database**: PostgreSQL with Sequelize ORM
-- **Authentication**: JWT
+- **Database**: PostgreSQL (via Supabase)
+- **Smart Contract**: Solidity (Ethereum/Sepolia)
+- **Deployment**: Vercel (Frontend & Backend)
 
 ## Project Structure
 
 ```
 ApparelDesk/
-├── backend/          # Express.js API
-│   ├── config/       # Database configuration
-│   ├── controllers/ # Route controllers
-│   ├── models/      # Sequelize models
-│   ├── routes/      # API routes
-│   ├── middleware/  # Auth middleware
-│   └── server.js    # Entry point
-├── frontend/        # Next.js application
-│   ├── app/         # Next.js app directory
-│   ├── components/ # React components
-│   └── store/       # State management
-└── public/          # Static assets (logo, favicon)
+├── backend/          # Express API + Database Logic
+│   ├── config/       # DB Connection (Supabase/Local)
+│   ├── models/       # Sequelize Models
+│   └── routes/       # API Endpoints
+├── frontend/         # Next.js App
+│   ├── app/          # Pages & Routes
+│   ├── components/   # UI Components
+│   └── utils/        # Web3 & Helper functions
+└── smart_contract/   # Solidity Contracts (if applicable)
 ```
 
-## Setup Instructions
+## Quick Start
+
+See [SETUP.md](./SETUP.md) for detailed installation and troubleshooting instructions.
 
 ### Prerequisites
-- Node.js 18+ 
-- PostgreSQL 12+
-- npm or yarn
-
-### Backend Setup
-
-1. Navigate to backend directory:
-```bash
-cd backend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file:
-```bash
-cp .env.example .env
-```
-
-4. Update `.env` with your database credentials:
-```
-PORT=5000
-NODE_ENV=development
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=wearcart
-DB_USER=postgres
-DB_PASSWORD=your_password
-JWT_SECRET=your_jwt_secret_key
-FRONTEND_URL=http://localhost:3000
-```
-
-5. Create PostgreSQL database:
-```sql
-CREATE DATABASE wearcart;
-```
-
-6. Start the server:
-```bash
-npm run dev
-```
-
-The backend will run on `http://localhost:5000`
-
-### Frontend Setup
-
-1. Navigate to frontend directory:
-```bash
-cd frontend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env.local` file:
-```
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
-
-4. Start the development server:
-```bash
-npm run dev
-```
-
-The frontend will run on `http://localhost:3000`
-
-## Database Models
-
-- **Users**: System users (internal and portal)
-- **Contacts**: Business contacts (customers/vendors)
-- **Products**: Clothing items with stock management
-- **Payment Terms**: Payment conditions with early payment discounts
-- **Discount Offers**: Discount programs
-- **Coupon Codes**: Individual coupon codes linked to discount offers
-- **Sale Orders**: Customer orders from website/backend
-- **Purchase Orders**: Vendor purchase orders
-- **Customer Invoices**: Invoices generated from sale orders
-- **Vendor Bills**: Bills from purchase orders
-- **Payments**: Payment records
-
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/me` - Get current user
+- Node.js 18+
+- Supabase Account
+- WalletConnect Project ID
 
 ### Products
 - `GET /api/products` - Get all products (with filters)

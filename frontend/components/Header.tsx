@@ -94,6 +94,7 @@ function HeaderContent() {
 
         <nav className="flex items-center gap-4">
           <Link href="/products" className="hidden md:inline text-gray-700 hover:text-red-600">Products</Link>
+          <Link href="/orders" className="hidden md:inline text-gray-700 hover:text-red-600">Orders</Link>
           <div className="flex items-center gap-4">
             <ConnectButton showBalance={{ smallScreen: false, largeScreen: true }} />
 
