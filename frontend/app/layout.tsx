@@ -7,9 +7,11 @@ import 'react-toastify/dist/ReactToastify.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'WearCart - Your Clothing, Digitized',
+  title: 'WearCart - Your Clothing, Digitaliized',
   description: 'Browse and shop for clothing online',
 }
+
+import { Web3Provider } from '@/components/Web3Provider'
 
 export default function RootLayout({
   children,
@@ -19,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <ToastContainer position="top-right" />
+        <Web3Provider>
+          {children}
+          <ToastContainer position="top-right" />
+        </Web3Provider>
       </body>
     </html>
   )

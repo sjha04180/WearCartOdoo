@@ -7,7 +7,8 @@
     "start": "node api/server.js",
     "dev": "nodemon api/server.js",
     "migrate": "node scripts/migrate.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "vercel-start": "node api/server.js"
   },
   "keywords": [
     "ecommerce",

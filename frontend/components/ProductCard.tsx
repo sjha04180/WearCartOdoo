@@ -60,6 +60,9 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center justify-between">
           <div>
             <div className="text-lg font-bold text-red-600">₹{Number(product.salesPrice || 0).toFixed(0)}</div>
+            <div className="text-xs text-gray-400 font-mono">
+              ~{(Number(product.salesPrice || 0) * 0.000005).toFixed(4)} ETH
+            </div>
             <div className="text-xs text-gray-400">Inclusive of taxes</div>
           </div>
 

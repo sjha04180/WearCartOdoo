@@ -7,6 +7,7 @@ import { useCartStore } from '@/store/cartStore'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Header() {
   return (
@@ -93,22 +94,32 @@ function HeaderContent() {
 
         <nav className="flex items-center gap-4">
           <Link href="/products" className="hidden md:inline text-gray-700 hover:text-red-600">Products</Link>
-          {user ? (
-            <>
-              {user.role === 'internal' && (
-                <Link href="/admin" className="text-red-600 hover:text-red-800 font-bold mr-2">
-                  Admin Panel
-                </Link>
-              )}
-              <Link href="/orders" className="text-gray-700 hover:text-red-600">My Orders</Link>
-              <button onClick={handleLogout} className="text-gray-700 hover:text-red-600">Logout</button>
-            </>
-          ) : (
-            <>
-              <Link href="/login" className="text-gray-700 hover:text-red-600">Login</Link>
-              <Link href="/register" className="btn-primary">Sign Up</Link>
-            </>
-          )}
+          <div className="flex items-center gap-4">
+            <ConnectButton showBalance={{ smallScreen: false, largeScreen: true }} />
+
+            {user ? (
+              <div className="flex items-center gap-4">
+                {user.role === 'internal' && (
+                  <Link href="/admin" className="text-red-600 hover:text-red-800 font-bold text-sm">
+                    Admin
+                  </Link>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="text-gray-700 hover:text-red-600 font-medium text-sm"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                className="text-gray-700 hover:text-red-600 font-medium text-sm"
+              >
+                Login
+              </Link>
+            )}
+          </div>
 
           <Link href="/cart" className="relative inline-flex items-center p-2 rounded-lg hover:bg-gray-50">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
